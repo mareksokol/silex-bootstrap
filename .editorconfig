@@ -1,0 +1,6 @@
+[*]
+indent_style = space
+end_of_line = lf
+
+[*.php]
+insert_final_newline = true

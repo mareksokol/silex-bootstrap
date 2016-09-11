@@ -1,0 +1,4 @@
+vendor
+storage/logs/*
+.env
+.php_cs.cache
