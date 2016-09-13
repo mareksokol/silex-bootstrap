@@ -1,7 +1,6 @@
 <?php
 namespace App\Entity\Repository;
 
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityManager;
 
 /**

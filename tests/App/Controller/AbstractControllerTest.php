@@ -12,8 +12,7 @@ class AbstractControllerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->response = new class() extends AbstractController
-        {
+        $this->response = new class() extends AbstractController {
         };
     }
 

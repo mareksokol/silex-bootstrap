@@ -4,7 +4,6 @@ namespace App\Service\Provider;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Doctrine\DBAL\PostgresTypes;
 
 /**
  * Class provide ORM mechanism.
