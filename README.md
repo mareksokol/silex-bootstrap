@@ -12,6 +12,9 @@ To start a new project, run:
 
 	composer create-project templar1/silex-bootstrap <target-dir>
 
+You need also to create config file in root directory:
+
+    cp config.php.dist config.php
 
 Directory structure
 -------------------
@@ -47,7 +50,7 @@ Usage
 -----
 
 ### Configuration
-All configuration should be places in `.env` file. To define new configuration parameters need to add definition in `App\Service\Provider\ConfigServiceProvider::$config`.
+All configuration should be places in `config.php` file. To define new configuration parameters need to add definition in `App\Service\Provider\ConfigServiceProvider::$config`.
 
 ### Controllers
 Controllers should inherit from `App\Controller\AbstractController` - this class implements several helper methods to simplify output from API.

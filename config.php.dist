@@ -1,0 +1,14 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'debug' => true,
+    'monolog.level' => 400,
+
+    'db.driver' => 'pdo_pgsql',
+    'db.dbname' => 'test_api',
+    'db.host' => 'localhost',
+    'db.user' => 'postgres',
+    'db.password' => 'postgres',
+    'db.port' => 5432,
+];

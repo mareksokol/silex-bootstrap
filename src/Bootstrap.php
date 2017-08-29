@@ -1,4 +1,6 @@
 <?php
+declare (strict_types=1);
+
 namespace App;
 
 use Ivoba\Silex\EnvProvider;
@@ -20,7 +22,11 @@ class Bootstrap
      */
     public function loadServices(Application $app): Bootstrap
     {
-        $app->register(new Service\Provider\ConfigServiceProvider(new EnvProvider()));
+        $app->register(
+            new Service\Provider\ConfigServiceProvider(
+                require_once(__DIR__ . '/../config.php')
+            )
+        );
 
         $app->register(new Provider\MonologServiceProvider(), [
             'monolog.name'    => 'app',
@@ -85,13 +91,27 @@ class Bootstrap
      *
      * @param Application $app
      */
-    private function routes(Application $app)
+    private function routes(Application $app): void
     {
-        $app->before(function (Request $request) {
-            if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
-                $data = json_decode($request->getContent(), true);
-                $request->request->replace(is_array($data) ? $data : []);
+        $app->before(function (Request $request): void {
+            if (0 !== strpos($request->headers->get('Content-Type'), 'application/json')) {
+                return ;
             }
+
+            if (Request::METHOD_PUT === $request->getMethod()) {
+                $data = json_decode(
+                    file_get_contents('php://input'),
+                    true
+                );
+            } else {
+                $data = json_decode($request->getContent(), true);
+            }
+
+            if (null === $data) {
+                throw new BadRequestHttpException('malformed-payload');
+            }
+
+            $request->request->replace($data);
         });
 
         $app->get('/', 'Controller.Default:indexAction');

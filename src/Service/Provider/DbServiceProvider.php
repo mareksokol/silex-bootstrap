@@ -1,4 +1,6 @@
 <?php
+declare (strict_types=1);
+
 namespace App\Service\Provider;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
@@ -16,7 +18,7 @@ class DbServiceProvider implements ServiceProviderInterface
      *
      * @param Container $app
      */
-    public function register(Container $app)
+    public function register(Container $app): void
     {
         $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
             'db.options' => [

@@ -1,4 +1,6 @@
 <?php
+declare (strict_types=1);
+
 namespace App\Service\Provider;
 
 use Pimple\Container;
@@ -20,7 +22,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
      *
      * @param Container $app
      */
-    public function register(Container $app)
+    public function register(Container $app): void
     {
         $app['console'] = function () use ($app) {
             $cli = new ConsoleApplication(
@@ -45,7 +47,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
      *
      * @param ConsoleApplication $cli
      */
-    public function registerOrm(ConsoleApplication $cli)
+    public function registerOrm(ConsoleApplication $cli): void
     {
         $cli->add(new Console\Command\GenerateEntitiesCommand());
         $cli->add(new Console\Command\GenerateProxiesCommand());
@@ -62,7 +64,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
      * @param Application $app
      * @param ConsoleApplication $cli
      */
-    public function registerMigrations(Application $app, ConsoleApplication $cli)
+    public function registerMigrations(Application $app, ConsoleApplication $cli): void
     {
         $helperSet = new SymfonyConsoleHelper\HelperSet([
             'db'     => new DoctrineConsoleHelper\ConnectionHelper($app['db']),

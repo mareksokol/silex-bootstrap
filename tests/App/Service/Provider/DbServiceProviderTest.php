@@ -2,9 +2,10 @@
 namespace Tests\App\Service\Provider;
 
 use App\Service\Provider\DbServiceProvider;
+use PHPUnit\Framework\TestCase;
 use Pimple\Container;
 
-class DbServiceProviderTest extends \PHPUnit_Framework_TestCase
+class DbServiceProviderTest extends TestCase
 {
     /**
      * @var array

@@ -11,7 +11,7 @@ abstract class AbstractRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @return EntityManager
      */
-    public function getManager():EntityManager
+    public function getManager(): EntityManager
     {
         return $this->getEntityManager();
     }

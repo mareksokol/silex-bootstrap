@@ -1,6 +1,6 @@
 vendor
 storage/logs/*
-.env
+config.php
 .php_cs.cache
 
 .idea
