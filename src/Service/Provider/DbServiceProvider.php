@@ -1,6 +1,5 @@
 <?php
-declare (strict_types=1);
-
+declare(strict_types=1);
 namespace App\Service\Provider;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;

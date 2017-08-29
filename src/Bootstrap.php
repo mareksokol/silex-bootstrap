@@ -1,9 +1,7 @@
 <?php
-declare (strict_types=1);
-
+declare(strict_types=1);
 namespace App;
 
-use Ivoba\Silex\EnvProvider;
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Silex\Provider;
@@ -95,7 +93,7 @@ class Bootstrap
     {
         $app->before(function (Request $request): void {
             if (0 !== strpos($request->headers->get('Content-Type'), 'application/json')) {
-                return ;
+                return;
             }
 
             if (Request::METHOD_PUT === $request->getMethod()) {
