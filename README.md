@@ -1,6 +1,6 @@
 Silex-bootstrap
 =================
-[![Build Status](https://travis-ci.org/templar1/silex-bootstrap.svg?branch=master)](https://travis-ci.org/templar1/silex-bootstrap)
+[![Build Status](https://travis-ci.org/mareksokol/silex-bootstrap.svg?branch=master)](https://travis-ci.org/mareksokol/silex-bootstrap)
 
 Silex-bootstrap is an already setup [Silex][silex] project dedicated for lightweight, RESTful APIs.
 
