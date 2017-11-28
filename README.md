@@ -10,7 +10,7 @@ Installation
 
 To start a new project, run:
 
-	composer create-project templar1/silex-bootstrap <target-dir>
+	composer create-project mareksokol/silex-bootstrap <target-dir>
 
 You need also to create config file in root directory:
 
