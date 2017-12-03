@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 /**
- * Trait JsonResponseTrait
- * @package App\Controller
+ * Trait JsonResponseTrait.
  */
 trait JsonResponseTrait
 {
@@ -14,8 +15,9 @@ trait JsonResponseTrait
      * Return configured response instance.
      *
      * @param mixed $data
-     * @param bool $error
-     * @param int $status
+     * @param bool  $error
+     * @param int   $status
+     *
      * @return HttpResponse
      */
     protected function response($data = null, $error = false, int $status = HttpResponse::HTTP_OK): HttpResponse
@@ -48,12 +50,15 @@ trait JsonResponseTrait
      * Create and return 404 (NotFound) response instance.
      *
      * @param string $msg
+     *
      * @return HttpResponse
      */
     protected function notFound(string $msg = null): HttpResponse
     {
         return $this->response(
-            null, $msg, HttpResponse::HTTP_NOT_FOUND
+            null,
+            $msg,
+            HttpResponse::HTTP_NOT_FOUND
         );
     }
 
@@ -61,12 +66,15 @@ trait JsonResponseTrait
      * Create and return 500 (InternalServerError) response instance with optional error message.
      *
      * @param string $msg
+     *
      * @return HttpResponse
      */
     protected function error(string $msg = null): HttpResponse
     {
         return $this->response(
-            null, $msg, HttpResponse::HTTP_INTERNAL_SERVER_ERROR
+            null,
+            $msg,
+            HttpResponse::HTTP_INTERNAL_SERVER_ERROR
         );
     }
 }

@@ -1,19 +1,27 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Tests\App\Service\Provider;
 
 use App\Service\Provider\ConfigServiceProvider;
 use PHPUnit\Framework\TestCase;
 use Pimple\Container;
 
+/**
+ * Class ConfigServiceProviderTest.
+ *
+ * @coversNothing
+ */
 class ConfigServiceProviderTest extends TestCase
 {
-    public function testCallRegisterMethodNumber()
+    public function testCallRegisterMethodNumber(): void
     {
         $options = [
-            'debug'         => true,
+            'debug' => true,
             'monolog.level' => 200,
-            'db.dbname'     => 'test',
-            'db.password'   => 'postgres',
+            'db.dbname' => 'test',
+            'db.password' => 'postgres',
         ];
 
         $pimple = new Container();
@@ -22,8 +30,8 @@ class ConfigServiceProviderTest extends TestCase
         $provider->register($pimple);
 
         $this->assertTrue($pimple['debug']);
-        $this->assertEquals(\Monolog\Logger::INFO, $pimple['monolog.level']);
-        $this->assertEquals('postgres', $pimple['db.password']);
-        $this->assertEquals('test', $pimple['db.dbname']);
+        $this->assertSame(\Monolog\Logger::INFO, $pimple['monolog.level']);
+        $this->assertSame('postgres', $pimple['db.password']);
+        $this->assertSame('test', $pimple['db.dbname']);
     }
 }

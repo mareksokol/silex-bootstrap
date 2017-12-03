@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Service\Provider;
 
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
@@ -8,12 +10,11 @@ use Pimple\ServiceProviderInterface;
 
 /**
  * Class provide ORM mechanism.
- * @package App\Service\Provider
  */
 class DbServiceProvider implements ServiceProviderInterface
 {
     /**
-     * Registers service
+     * Registers service.
      *
      * @param Container $app
      */
@@ -21,12 +22,12 @@ class DbServiceProvider implements ServiceProviderInterface
     {
         $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
             'db.options' => [
-                'driver'        => $app['db.driver'],
-                'dbname'        => $app['db.dbname'],
-                'host'          => $app['db.host'],
-                'user'          => $app['db.user'],
-                'password'      => $app['db.password'],
-                'port'          => $app['db.port'],
+                'driver' => $app['db.driver'],
+                'dbname' => $app['db.dbname'],
+                'host' => $app['db.host'],
+                'user' => $app['db.user'],
+                'password' => $app['db.password'],
+                'port' => $app['db.port'],
                 'driverOptions' => [
                     \PDO::ATTR_EMULATE_PREPARES => true,
                 ],
@@ -34,13 +35,13 @@ class DbServiceProvider implements ServiceProviderInterface
         ]);
 
         $app->register(new DoctrineOrmServiceProvider(), [
-            'orm.proxies_dir'           => __DIR__ . '/../../../storage/proxies',
-            'orm.em.options'            => [
+            'orm.proxies_dir' => __DIR__.'/../../../storage/proxies',
+            'orm.em.options' => [
                 'mappings' => [
                     [
-                        'type'                         => 'annotation',
-                        'namespace'                    => 'App\Entity',
-                        'path'                         => __DIR__ . '/../../../src',
+                        'type' => 'annotation',
+                        'namespace' => 'App\Entity',
+                        'path' => __DIR__.'/../../../src',
                         'use_simple_annotation_reader' => false,
                     ],
                 ],
@@ -48,7 +49,7 @@ class DbServiceProvider implements ServiceProviderInterface
         ]);
 
         \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader([
-            require __DIR__ . '/../../../vendor/autoload.php',
+            require __DIR__.'/../../../vendor/autoload.php',
             'loadClass',
         ]);
     }

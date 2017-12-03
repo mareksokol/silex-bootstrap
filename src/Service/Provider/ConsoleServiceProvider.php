@@ -1,23 +1,25 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Service\Provider;
 
+use Doctrine\DBAL\Migrations as DoctrineMigrations;
+use Doctrine\DBAL\Tools\Console\Helper as DoctrineConsoleHelper;
+use Doctrine\ORM as DoctrineORM;
+use Doctrine\ORM\Tools\Console;
+use Knp\Console\Application as ConsoleApplication;
+use Knp\Console\ConsoleEvent;
+use Knp\Console\ConsoleEvents;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Silex\Application;
-use Knp\Console\Application as ConsoleApplication;
-use Knp\Console\ConsoleEvents;
-use Knp\Console\ConsoleEvent;
 use Symfony\Component\Console\Helper as SymfonyConsoleHelper;
-use Doctrine\DBAL\Tools\Console\Helper as DoctrineConsoleHelper;
-use Doctrine\ORM as DoctrineORM;
-use Doctrine\DBAL\Migrations as DoctrineMigrations;
-use Doctrine\ORM\Tools\Console;
 
 class ConsoleServiceProvider implements ServiceProviderInterface
 {
     /**
-     * Registers service
+     * Registers service.
      *
      * @param Container $app
      */
@@ -26,7 +28,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
         $app['console'] = function () use ($app) {
             $cli = new ConsoleApplication(
                 $app,
-                __DIR__ . '/../../..',
+                __DIR__.'/../../..',
                 'Console App'
             );
 
@@ -60,14 +62,14 @@ class ConsoleServiceProvider implements ServiceProviderInterface
     /**
      * Register configuration for migrations mapping.
      *
-     * @param Application $app
+     * @param Application        $app
      * @param ConsoleApplication $cli
      */
     public function registerMigrations(Application $app, ConsoleApplication $cli): void
     {
         $helperSet = new SymfonyConsoleHelper\HelperSet([
-            'db'     => new DoctrineConsoleHelper\ConnectionHelper($app['db']),
-            'em'     => new DoctrineORM\Tools\Console\Helper\EntityManagerHelper($app['orm.em']),
+            'db' => new DoctrineConsoleHelper\ConnectionHelper($app['db']),
+            'em' => new DoctrineORM\Tools\Console\Helper\EntityManagerHelper($app['orm.em']),
             'dialog' => new SymfonyConsoleHelper\QuestionHelper(),
         ]);
 

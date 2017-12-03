@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 /**
- * Class DefaultController
- * @package App\Controller
+ * Class DefaultController.
  */
 class DefaultController
 {

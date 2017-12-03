@@ -1,14 +1,15 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App;
 
-use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Silex\Provider;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class Bootstrap.
- * @package App
  */
 class Bootstrap
 {
@@ -16,20 +17,21 @@ class Bootstrap
      * Registers application services.
      *
      * @param Application $app
+     *
      * @return Bootstrap
      */
-    public function loadServices(Application $app): Bootstrap
+    public function loadServices(Application $app): self
     {
         $app->register(
             new Service\Provider\ConfigServiceProvider(
-                require_once(__DIR__ . '/../config.php')
+                require_once(__DIR__.'/../config.php')
             )
         );
 
         $app->register(new Provider\MonologServiceProvider(), [
-            'monolog.name'    => 'app',
-            'monolog.logfile' => __DIR__ . '/../storage/logs/app.log',
-            'monolog.level'   => $app['monolog.level'],
+            'monolog.name' => 'app',
+            'monolog.logfile' => __DIR__.'/../storage/logs/app.log',
+            'monolog.level' => $app['monolog.level'],
         ]);
 
         $app->register(new Service\Provider\DbServiceProvider());
@@ -43,9 +45,10 @@ class Bootstrap
      * Register console provider.
      *
      * @param Application $app
+     *
      * @return Bootstrap
      */
-    public function loadConsoleServices(Application $app): Bootstrap
+    public function loadConsoleServices(Application $app): self
     {
         $app->register(new Service\Provider\ConsoleServiceProvider());
 
@@ -56,9 +59,10 @@ class Bootstrap
      * Registers application controllers.
      *
      * @param Application $app
+     *
      * @return Bootstrap
      */
-    public function loadControllers(Application $app): Bootstrap
+    public function loadControllers(Application $app): self
     {
         $app['Controller.Default'] = function () use ($app) {
             return new Controller\Auth();
@@ -73,9 +77,10 @@ class Bootstrap
      * Setup error handler.
      *
      * @param Application $app
+     *
      * @return Bootstrap
      */
-    public function errorHandler(Application $app): Bootstrap
+    public function errorHandler(Application $app): self
     {
         $app->error(function (\Exception $e, Request $request, int $code) use ($app) {
             return $app['Controller.Default']->error($e->getMessage(), $code);

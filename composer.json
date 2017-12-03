@@ -1,5 +1,5 @@
 {
-  "name": "templar1/silex-bootstrap",
+  "name": "mareksokol/silex-bootstrap",
   "description": "Bootstrap for Silex based API",
   "type": "project",
   "license": "GPL-3.0",
@@ -11,9 +11,9 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "silex/silex": "~2.0",
+    "silex/silex": "^2.0",
     "monolog/monolog": "^1.23",
-    "doctrine/dbal": "~2.6",
+    "doctrine/dbal": "^2.6",
     "dflydev/doctrine-orm-service-provider": "^2.0",
     "doctrine/migrations": "^1.5",
     "knplabs/console-service-provider": "^2.1",
@@ -21,7 +21,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~6.3",
-    "friendsofphp/php-cs-fixer": "^2.4"
+    "friendsofphp/php-cs-fixer": "^2.8"
   },
   "autoload": {
     "psr-0": {

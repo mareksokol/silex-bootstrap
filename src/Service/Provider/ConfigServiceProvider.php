@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Service\Provider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class ConfigServiceProvider
- * @package App\Service\Provider
+ * Class ConfigServiceProvider.
  */
 class ConfigServiceProvider implements ServiceProviderInterface
 {
@@ -17,18 +18,19 @@ class ConfigServiceProvider implements ServiceProviderInterface
      * @var array
      */
     private $options = [
-        'debug'                      => false,
-        'monolog.level'              => \Monolog\Logger::ERROR,
+        'debug' => false,
+        'monolog.level' => \Monolog\Logger::ERROR,
 
-        'db.migrations.namespace'    => 'App\\Entity\\Migration',
-        'db.migrations.directory'    => __DIR__ . '/../../../src/Entity/Migrations',
-        'db.migrations.tableName'    => 'migration_version',
-        'db.migrations.name'         => 'Database Migrations',
+        'db.migrations.namespace' => 'App\\Entity\\Migration',
+        'db.migrations.directory' => __DIR__.'/../../../src/Entity/Migrations',
+        'db.migrations.tableName' => 'migration_version',
+        'db.migrations.name' => 'Database Migrations',
     ];
 
     /**
      * ConfigServiceProvider constructor.
-     * @param array|null $config
+     *
+     * @param null|array $config
      */
     public function __construct(array $config = null)
     {
@@ -39,7 +41,7 @@ class ConfigServiceProvider implements ServiceProviderInterface
     }
 
     /**
-     * Registers service
+     * Registers service.
      *
      * @param Container $app
      */
